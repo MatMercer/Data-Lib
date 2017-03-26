@@ -29,6 +29,17 @@ int main() {
                 }
 
                 break;
+
+            case 'r':
+            case 'R':
+                if (!stack.isEmpty()) {
+                    cout << "Removed the '" + stack.pop(addStr) << "' element." << endl;
+                }
+                else {
+                    cout << "The stack is empty!" << endl;
+                }
+
+                break;
             default:
                 cout << "Invalid choice '" << choice << "'." << endl;
         }
