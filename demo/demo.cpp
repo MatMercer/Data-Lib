@@ -12,8 +12,13 @@ int main() {
     string addStr;
 
     cout << "The current max size of the stack is " << stack.size() << "." << endl;
+    cout << "Select a option: " << endl;
     while (choice != 'q') {
+        cout << "A -> Adds a string to the stack." << endl;
+        cout << "R -> Removes and return a string from the stack." << endl;
+        cout << "Q -> Prints the stack and exit." << endl;
         cout << "There are " << stack.top() << " elements at the stack." << endl;
+
         cout << "Your choice: ";
         cin >> choice;
 
