@@ -3,7 +3,7 @@
 
 #include <iostream>
 
-template <class T>
+template<class T>
 class Stack {
 private:
     T *data;
@@ -14,11 +14,15 @@ public:
     Stack(unsigned int size);
 
     bool push(T element);
+
     T pop();
+
     int size();
+
     int top();
 
     bool isEmpty();
+
     bool isFull();
 };
 

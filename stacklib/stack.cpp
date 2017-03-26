@@ -1,8 +1,6 @@
 #include "stack.h"
 
-#include <iostream>
-
-template <class T>
+template<class T>
 Stack<T>::Stack(unsigned int size) {
     // Cursor not set
     cursor = -1;
@@ -13,7 +11,7 @@ Stack<T>::Stack(unsigned int size) {
     data = new T[size];
 }
 
-template <class T>
+template<class T>
 bool Stack<T>::push(T element) {
     // Returns false if the stack is already filled out
     if (isFull()) {
@@ -26,7 +24,7 @@ bool Stack<T>::push(T element) {
     return true;
 }
 
-template <class T>
+template<class T>
 T Stack<T>::pop() {
     // Returns NULL if can't pop the element
     if (isEmpty()) {
@@ -37,25 +35,26 @@ T Stack<T>::pop() {
     return data[cursor--];
 }
 
-template <class T>
+template<class T>
 int Stack<T>::top() {
     return cursor + 1;
 }
 
-template <class T>
+template<class T>
 bool Stack<T>::isEmpty() {
     return cursor == -1;
 }
 
-template <class T>
+template<class T>
 bool Stack<T>::isFull() {
     return (cursor == max_size - 1);
 }
 
-template <class T>
+template<class T>
 int Stack<T>::size() {
     return max_size;
 }
 
 // Explicit instantiations of all the templates used in the file
-template class Stack<std::string>;
+template
+class Stack<std::string>;

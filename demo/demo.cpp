@@ -1,5 +1,6 @@
 #include <iostream>
 #include "../stacklib/stack.h"
+
 using namespace std;
 
 int main() {
@@ -22,15 +23,14 @@ int main() {
         cout << "Your choice: ";
         cin >> choice;
 
-        switch(choice) {
+        switch (choice) {
             case 'a':
             case 'A':
                 if (!stack.isFull()) {
                     cout << "Insert a string: ";
                     cin >> addStr;
                     stack.push(addStr);
-                }
-                else {
+                } else {
                     cout << "The stack is full!" << endl;
                 }
 
@@ -40,8 +40,7 @@ int main() {
             case 'R':
                 if (!stack.isEmpty()) {
                     cout << "Removed the '" + stack.pop() << "' element." << endl;
-                }
-                else {
+                } else {
                     cout << "The stack is empty!" << endl;
                 }
 
@@ -51,7 +50,7 @@ int main() {
             case 'Q':
                 cout << endl << "The elements of the stack: " << endl;
 
-                for(int i = stack.top(); i > 0; i--) {
+                for (int i = stack.top(); i > 0; i--) {
                     cout << i << ". '" << stack.pop() << "' ." << endl;
                 }
 
@@ -65,4 +64,5 @@ int main() {
 }
 
 // Explicit instantiations of all the templates used in the file
-template class Stack<string>;
+template
+class Stack<string>;
