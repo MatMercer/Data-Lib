@@ -49,6 +49,12 @@ int main() {
 
             case 'q':
             case 'Q':
+                cout << endl << "The elements of the stack: " << endl;
+
+                for(int i = stack.top(); i > 0; i--) {
+                    cout << i << ". '" << stack.pop(addStr) << "' ." << endl;
+                }
+
                 cout << "Bye." << endl;
 
                 break;
