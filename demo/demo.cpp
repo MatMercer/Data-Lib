@@ -1,5 +1,4 @@
 #include <iostream>
-#include <iomanip>
 #include "../stacklib/stack.h"
 using namespace std;
 
@@ -9,11 +8,30 @@ int main() {
     // The current choice
     char choice;
 
-    while (choice != 'q') {
-        cout << setw(4) << "Test";
+    // The current added string
+    string addStr;
 
+    cout << "The current max size of the stack is " << stack.size() << "." << endl;
+    while (choice != 'q') {
         cout << "Your choice: ";
         cin >> choice;
+
+        switch(choice) {
+            case 'a':
+            case 'A':
+                if (!stack.isFull()) {
+                    cout << "Insert a string: ";
+                    cin >> addStr;
+                    stack.push(addStr);
+                }
+                else {
+                    cout << "The stack is full!" << endl;
+                }
+
+                break;
+            default:
+                cout << "Invalid choice '" << choice << "'." << endl;
+        }
     }
 }
 
