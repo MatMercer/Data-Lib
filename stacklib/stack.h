@@ -14,7 +14,7 @@ public:
     Stack(unsigned int size);
 
     bool push(T element);
-    T pop(T element);
+    T pop();
     int size();
     int top();
 

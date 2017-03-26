@@ -27,7 +27,7 @@ bool Stack<T>::push(T element) {
 }
 
 template <class T>
-T Stack<T>::pop(T element) {
+T Stack<T>::pop() {
     // Returns NULL if can't pop the element
     if (cursor == -1) {
         return NULL;

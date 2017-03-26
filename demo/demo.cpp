@@ -39,7 +39,7 @@ int main() {
             case 'r':
             case 'R':
                 if (!stack.isEmpty()) {
-                    cout << "Removed the '" + stack.pop(addStr) << "' element." << endl;
+                    cout << "Removed the '" + stack.pop() << "' element." << endl;
                 }
                 else {
                     cout << "The stack is empty!" << endl;
@@ -52,7 +52,7 @@ int main() {
                 cout << endl << "The elements of the stack: " << endl;
 
                 for(int i = stack.top(); i > 0; i--) {
-                    cout << i << ". '" << stack.pop(addStr) << "' ." << endl;
+                    cout << i << ". '" << stack.pop() << "' ." << endl;
                 }
 
                 cout << "Bye." << endl;
