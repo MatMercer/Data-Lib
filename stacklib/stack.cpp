@@ -16,7 +16,7 @@ Stack<T>::Stack(unsigned int size) {
 template <class T>
 bool Stack<T>::push(T element) {
     // Returns false if the stack is already filled out
-    if (this->cursor == max_size) {
+    if (isFull()) {
         return false;
     }
 
@@ -29,7 +29,7 @@ bool Stack<T>::push(T element) {
 template <class T>
 T Stack<T>::pop() {
     // Returns NULL if can't pop the element
-    if (cursor == -1) {
+    if (isEmpty()) {
         return NULL;
     }
 
