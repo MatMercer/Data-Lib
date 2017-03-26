@@ -41,6 +41,12 @@ int main() {
                 }
 
                 break;
+
+            case 'q':
+            case 'Q':
+                cout << "Bye." << endl;
+
+                break;
             default:
                 cout << "Invalid choice '" << choice << "'." << endl;
         }
