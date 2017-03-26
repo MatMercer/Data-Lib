@@ -13,6 +13,7 @@ int main() {
 
     cout << "The current max size of the stack is " << stack.size() << "." << endl;
     while (choice != 'q') {
+        cout << "There are " << stack.top() << " elements at the stack." << endl;
         cout << "Your choice: ";
         cin >> choice;
 
