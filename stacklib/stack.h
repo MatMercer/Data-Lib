@@ -15,7 +15,8 @@ public:
 
     bool push(T element);
     T pop(T element);
-    int currentSize();
+    int size();
+    int top();
 
     bool isEmpty();
     bool isFull();

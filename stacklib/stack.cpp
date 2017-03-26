@@ -38,7 +38,7 @@ T Stack<T>::pop(T element) {
 }
 
 template <class T>
-int Stack<T>::currentSize() {
+int Stack<T>::top() {
     return cursor + 1;
 }
 
@@ -50,6 +50,11 @@ bool Stack<T>::isEmpty() {
 template <class T>
 bool Stack<T>::isFull() {
     return (cursor == max_size - 1);
+}
+
+template <class T>
+int Stack<T>::size() {
+    return max_size;
 }
 
 // Explicit instantiations of all the templates used in the file
