@@ -20,6 +20,9 @@ private:
     // Returns true if it was possible to allocate the memory
     bool duplicateDataSize();
 
+    // Returns a pointer of T with the given size
+    T *allocateArray(int size);
+
 public:
     Queue(int startSize);
 

@@ -4,6 +4,9 @@
 template<class T>
 Queue<T>::Queue(int startSize) {
     this->dataSize = startSize;
+
+    // Allocates the array
+    this->allocateArray(this->dataSize);
 }
 
 template<class T>
@@ -14,44 +17,62 @@ bool Queue<T>::duplicateDataSize() {
 
 template<class T>
 bool Queue<T>::enqueue(T el) {
-    // TODO: Implement this
+    // TODO: Implement duplicate data size
+    // TODO: Implement dynamic bindex when there is a free space
+    if (!this->full()) {
+        // Add the element
+        this->data[bidx++] = el;
+
+        // Increments the element count
+        elCount += 1;
+
+        return true;
+    }
+
+    // If the queue is full
     return false;
 }
 
 template<class T>
 T Queue<T>::dequeue(){
-    // TODO: Implement this
-    return NULL;
+    if(!this->empty()) {
+        this->elCount -= 1;
+
+        return this->[fidx--];
+    }
 }
 
 template<class T>
 T Queue<T>::peek() {
-    // TODO: Implement this
+    if(!this->empty()) {
+        return this->data[this->fidx];
+    }
     return NULL;
 }
 
 template <class T>
 int Queue<T>::count() {
-    // TODO: Implement this
-    return 0;
+    return this->elCount;
 }
 
 template <class T>
 int Queue<T>::queueSize() {
-    // TODO: Implement this
-    return 0;
+    return this->dataSize;
 }
 
 template <class T>
 bool Queue<T>::empty() {
-    // TODO: Implement this
-    return false;
+    return this->elCount == 0;
 }
 
 template <class T>
 bool Queue<T>::full() {
-    // TODO: Implement this
-    return false;
+    return this->dataSize == this->elCount;
+}
+
+template <class T>
+T *Queue<T>::allocateArray(int size) {
+    return new T[size];
 }
 
 // Explicit instantiations of all the templates used in the file
