@@ -23,6 +23,13 @@ private:
     // Returns a pointer of T with the given size
     T *allocateArray(int size);
 
+    // Dynamic update of the indexes, forming a "circular array"
+    void updateBidx(bool increment);
+    void updateFidx(bool increment);
+
+    // TODO: Implement a general function that updates the indexes
+    //void updateIdx(bool frontOrBack);
+
 public:
     Queue(int startSize);
 
