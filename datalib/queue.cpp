@@ -51,7 +51,7 @@ bool Queue<T>::enqueue(T el) {
     data[bidx] = el;
 
     // Update the back index, incrementing it
-    updateBidx(true);
+    incrementIdx(&bidx);
 
     // Increments the element count
     elCount += 1;
@@ -67,7 +67,7 @@ T Queue<T>::dequeue() {
         el = data[fidx];
 
         // Increment the front index to the next possible pos
-        updateFidx(true);
+        incrementIdx(&fidx);
 
         // Decrement the elCount
         this->elCount -= 1;
@@ -107,46 +107,14 @@ T *Queue<T>::allocateArray(int size) {
     return new T[size];
 }
 
-// TODO: Implement a general function that updates the indexes
-//template <class T>
-//void Queue<T>::updateIdx(bool frontOrBack);
-template<class T>
-void Queue<T>::updateBidx(bool increment) {
-    if (increment) {
-        // Increment the idx
-        bidx += 1;
-    } else {
-        // Deincrement idx
-        bidx -= 1;
-    }
+template <class T>
+void Queue<T>::incrementIdx(int *value) {
+    // Increments the value
+    *value += 1;
 
-    // If the idx is less than 0, go to the last idx
-    if (bidx < 0) {
-        bidx = dataSize - 1;
-    }
-        // If larger than the last idx, go to the first idx (eg 0)
-    else if (bidx == dataSize) {
-        bidx = 0;
-    }
-}
-
-template<class T>
-void Queue<T>::updateFidx(bool increment) {
-    if (increment) {
-        // Increment the idx
-        fidx += 1;
-    } else {
-        // Deincrement idx
-        fidx -= 1;
-    }
-
-    // If the idx is less than 0, go to the last idx
-    if (fidx < 0) {
-        fidx = dataSize - 1;
-    }
-        // If larger than the last idx, go to the first idx (eg 0)
-    else if (fidx == dataSize) {
-        fidx = 0;
+    // If the value is larger than the data length, it *must* go to zero
+    if (*value == dataSize) {
+        *value = 0;
     }
 }
 

@@ -28,8 +28,8 @@ private:
 
     void updateFidx(bool increment);
 
-    // TODO: Implement a general function that updates the indexes
-    //void updateIdx(bool frontOrBack);
+    // Dynamically increments a index, looping it out
+    void incrementIdx(int *value);
 
 public:
     Queue(int startSize);
