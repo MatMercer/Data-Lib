@@ -43,7 +43,7 @@ bool Queue<T>::duplicateDataSize() {
 template<class T>
 bool Queue<T>::enqueue(T el) {
     // Duplicates the data size when full
-    if(this->full()) {
+    if (this->full()) {
         duplicateDataSize();
     }
 
@@ -60,10 +60,10 @@ bool Queue<T>::enqueue(T el) {
 }
 
 template<class T>
-T Queue<T>::dequeue(){
+T Queue<T>::dequeue() {
     // Returns null if can't dequeue
     T el;
-    if(!this->empty()) {
+    if (!this->empty()) {
         el = data[fidx];
 
         // Increment the front index to the next possible pos
@@ -77,32 +77,32 @@ T Queue<T>::dequeue(){
 
 template<class T>
 T Queue<T>::peek() {
-    if(!this->empty()) {
+    if (!this->empty()) {
         return this->data[this->fidx];
     }
 }
 
-template <class T>
+template<class T>
 int Queue<T>::count() {
     return this->elCount;
 }
 
-template <class T>
+template<class T>
 int Queue<T>::queueSize() {
     return this->dataSize;
 }
 
-template <class T>
+template<class T>
 bool Queue<T>::empty() {
     return this->elCount == 0;
 }
 
-template <class T>
+template<class T>
 bool Queue<T>::full() {
     return this->dataSize == this->elCount;
 }
 
-template <class T>
+template<class T>
 T *Queue<T>::allocateArray(int size) {
     return new T[size];
 }
@@ -110,13 +110,12 @@ T *Queue<T>::allocateArray(int size) {
 // TODO: Implement a general function that updates the indexes
 //template <class T>
 //void Queue<T>::updateIdx(bool frontOrBack);
-template <class T>
+template<class T>
 void Queue<T>::updateBidx(bool increment) {
     if (increment) {
         // Increment the idx
         bidx += 1;
-    }
-    else {
+    } else {
         // Deincrement idx
         bidx -= 1;
     }
@@ -125,19 +124,18 @@ void Queue<T>::updateBidx(bool increment) {
     if (bidx < 0) {
         bidx = dataSize - 1;
     }
-    // If larger than the last idx, go to the first idx (eg 0)
-    else if (bidx == dataSize){
+        // If larger than the last idx, go to the first idx (eg 0)
+    else if (bidx == dataSize) {
         bidx = 0;
     }
 }
 
-template <class T>
+template<class T>
 void Queue<T>::updateFidx(bool increment) {
     if (increment) {
         // Increment the idx
         fidx += 1;
-    }
-    else {
+    } else {
         // Deincrement idx
         fidx -= 1;
     }
@@ -146,8 +144,8 @@ void Queue<T>::updateFidx(bool increment) {
     if (fidx < 0) {
         fidx = dataSize - 1;
     }
-    // If larger than the last idx, go to the first idx (eg 0)
-    else if (fidx == dataSize){
+        // If larger than the last idx, go to the first idx (eg 0)
+    else if (fidx == dataSize) {
         fidx = 0;
     }
 }
@@ -155,5 +153,6 @@ void Queue<T>::updateFidx(bool increment) {
 // Explicit instantiations of all the templates used in the file
 template
 class Queue<int>;
+
 template
 class Queue<string>;

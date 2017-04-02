@@ -25,6 +25,7 @@ private:
 
     // Dynamic update of the indexes, forming a "circular array"
     void updateBidx(bool increment);
+
     void updateFidx(bool increment);
 
     // TODO: Implement a general function that updates the indexes

@@ -28,7 +28,7 @@ int main() {
     debugQueue(&queue, "Fifty");
 
     cout << endl << "The remaining elements are: " << endl;
-    while(!queue.empty()) {
+    while (!queue.empty()) {
         cout << queue.dequeue() << endl;
     }
 
@@ -38,5 +38,6 @@ int main() {
 // Explicit instantiations of all the templates used in the file
 template
 class Queue<int>;
+
 template
 class Queue<string>;
