@@ -3,28 +3,32 @@
 
 using namespace std;
 
+void debugDequeue(Queue<string> *queue) {
+    cout << "Removed the element: " << queue->dequeue() << "." << endl;
+}
+
+void debugQueue(Queue<string> *queue, string added) {
+    queue->enqueue(added);
+    cout << "Added the element: " << added << "." << endl;
+}
+
+
 int main() {
     Queue<string> queue = Queue<string>(3);
 
-    queue.enqueue("First");
-    queue.enqueue("Second");
-    queue.enqueue("Third");
+    debugQueue(&queue, "First");
+    debugQueue(&queue, "Second");
+    debugQueue(&queue, "Third");
+    debugQueue(&queue, "Forty");
 
-    queue.dequeue();
+    debugDequeue(&queue);
+    debugDequeue(&queue);
+    debugDequeue(&queue);
 
-    queue.enqueue("Forty");
+    debugQueue(&queue, "Fifty");
 
-    queue.dequeue();
-    queue.dequeue();
-
-    queue.enqueue("Fifth");
-    queue.enqueue("Sixth");
-
-    queue.dequeue();
-
-    queue.enqueue("Seventy");
-
-    while (!queue.empty()) {
+    cout << endl << "The remaining elements are: " << endl;
+    while(!queue.empty()) {
         cout << queue.dequeue() << endl;
     }
 

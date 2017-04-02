@@ -18,28 +18,45 @@ Queue<T>::Queue(int startSize) {
 
 template<class T>
 bool Queue<T>::duplicateDataSize() {
-    // TODO: Implement this
-    return false;
+    // Creates an array with the double of the latest size
+    T *newArray = allocateArray(dataSize * 2);
+
+    // Moves the back index to the last pos of the *new* array
+    bidx = dataSize;
+    // Assigns all the *used* elements to the new array
+    for (int i = fidx; i < bidx; i++) {
+        newArray[i] = data[i];
+    }
+
+    // Duplicates the datasize
+    dataSize *= 2;
+
+    // Deletes the old array
+    delete[] data;
+
+    // Assigns the pointer to the new array
+    data = newArray;
+
+    return true;
 }
 
 template<class T>
 bool Queue<T>::enqueue(T el) {
-    // TODO: Implement duplicate data size
-    if (!this->full()) {
-        // Add the element
-        data[bidx] = el;
-
-        // Update the back index, incrementing it
-        updateBidx(true);
-
-        // Increments the element count
-        elCount += 1;
-
-        return true;
+    // Duplicates the data size when full
+    if(this->full()) {
+        duplicateDataSize();
     }
 
-    // If the queue is full
-    return false;
+    // Add the element
+    data[bidx] = el;
+
+    // Update the back index, incrementing it
+    updateBidx(true);
+
+    // Increments the element count
+    elCount += 1;
+
+    return true;
 }
 
 template<class T>
