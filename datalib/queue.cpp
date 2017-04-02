@@ -77,9 +77,12 @@ T Queue<T>::dequeue() {
 
 template<class T>
 T Queue<T>::peek() {
+    T el;
     if (!this->empty()) {
-        return this->data[this->fidx];
+        el = this->data[this->fidx];
     }
+
+    return el;
 }
 
 template<class T>
