@@ -28,9 +28,7 @@ int main() {
     debugQueue(&queue, "Fifty");
 
     cout << endl << "The remaining elements are: " << endl;
-    while (!queue.empty()) {
-        cout << queue.dequeue() << endl;
-    }
+    queue.printQueue();
 
     return 0;
 }

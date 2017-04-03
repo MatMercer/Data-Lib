@@ -1,6 +1,10 @@
 #ifndef STACKLIB_QUEUE_H
 #define STACKLIB_QUEUE_H
 
+#include <iostream>
+
+using namespace std;
+
 
 template<class T>
 class Queue {
@@ -54,6 +58,9 @@ public:
 
     // Returns if it is full
     bool full();
+
+    // Prints the queue, used to debug
+    void printQueue();
 };
 
 #endif //STACKLIB_QUEUE_H

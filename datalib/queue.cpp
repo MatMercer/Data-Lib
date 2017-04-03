@@ -1,5 +1,6 @@
 #include "queue.h"
 #include <iostream>
+#include <queue>
 
 using namespace std;
 
@@ -119,6 +120,18 @@ void Queue<T>::incrementIdx(int *value) {
     if (*value == dataSize) {
         *value = 0;
     }
+}
+
+template <class T>
+void Queue<T>::printQueue() {
+    int i = fidx;
+    while(i != bidx) {
+        cout << " | " << data[i] << " | ";
+
+        incrementIdx(&i);
+    }
+
+    cout << endl;
 }
 
 // Explicit instantiations of all the templates used in the file
