@@ -1,6 +1,4 @@
 #include "queue.h"
-#include <iostream>
-#include <queue>
 
 using namespace std;
 
@@ -111,7 +109,7 @@ T *Queue<T>::allocateArray(int size) {
     return new T[size];
 }
 
-template <class T>
+template<class T>
 void Queue<T>::incrementIdx(int *value) {
     // Increments the value
     *value += 1;
@@ -122,10 +120,10 @@ void Queue<T>::incrementIdx(int *value) {
     }
 }
 
-template <class T>
+template<class T>
 void Queue<T>::printQueue() {
     int i = fidx;
-    while(i != bidx) {
+    while (i != bidx) {
         cout << " | " << data[i] << " | ";
 
         incrementIdx(&i);
