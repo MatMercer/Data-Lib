@@ -7,25 +7,48 @@ void debugDequeue(Queue<string> *queue) {
     cout << "Removed the element: " << queue->dequeue() << "." << endl;
 }
 
-void debugQueue(Queue<string> *queue, string added) {
+void debugEnqueue(Queue<string> *queue, string added) {
     queue->enqueue(added);
     cout << "Added the element: " << added << "." << endl;
 }
 
+void debugQueueSize(Queue<string> *queue) {
+     cout << endl << "The size of the queue is: " << queue->queueSize() << endl;
+}
+
 
 int main() {
-    Queue<string> queue = Queue<string>(3);
+    Queue<string> queue = Queue<string>(1);
 
-    debugQueue(&queue, "First");
-    debugQueue(&queue, "Second");
-    debugQueue(&queue, "Third");
-    debugQueue(&queue, "Forty");
+    debugQueueSize(&queue);
+
+    debugEnqueue(&queue, "First");
+    debugEnqueue(&queue, "Second");
+
+    debugQueueSize(&queue);
+
+    debugEnqueue(&queue, "Third");
+    debugEnqueue(&queue, "Forty");
+
+    debugQueueSize(&queue);
+
+    debugDequeue(&queue);
+    debugDequeue(&queue);
+
+    debugEnqueue(&queue, "Fifty");
+    debugEnqueue(&queue, "Sixty");
+    debugEnqueue(&queue, "Seventy");
+    debugEnqueue(&queue, "Eighty");
+    debugEnqueue(&queue, "Ninety");
+    debugEnqueue(&queue, "Tenth");
 
     debugDequeue(&queue);
     debugDequeue(&queue);
     debugDequeue(&queue);
+    debugDequeue(&queue);
+    debugDequeue(&queue);
 
-    debugQueue(&queue, "Fifty");
+    debugQueueSize(&queue);
 
     cout << endl << "The remaining elements are: " << endl;
     queue.printQueue();

@@ -33,7 +33,7 @@ private:
     void updateFidx(bool increment);
 
     // Dynamically increments a index, looping it out
-    void incrementIdx(int *value);
+    int incrementIdx(int *value);
 
 public:
     Queue(int startSize);
