@@ -1,7 +1,7 @@
 #ifndef DATALIB_LIST_H
 #define DATALIB_LIST_H
 
-template <class T>
+template<class T>
 class List {
 private:
     // Adds an space to an idx
