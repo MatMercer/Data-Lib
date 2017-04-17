@@ -18,6 +18,8 @@ bool List<T>::addSpace(int idx) {
     while (i-- >= idx) {
         data[i + 1] = data[i];
     }
+
+    return true;
 }
 
 template <class T>
@@ -55,7 +57,8 @@ bool List<T>::duplicateDataSize() {
     return true;
 }
 
-bool List::duplicateDataSizeToIdx(int idx) {
+template <class T>
+bool List<T>::duplicateDataSizeToIdx(int idx) {
     // While not successful
     while(idx >= size) {
         // If it failed to duplicate, cancel the operation
@@ -104,8 +107,9 @@ bool List<T>::add(int idx, T el) {
         idx = count + 1;
     }
 
-    // Adds the el
+    // Adds the el and adds to count
     data[idx] = el;
+    count += 1;
 
     // Returns success
     return true;
@@ -113,14 +117,16 @@ bool List<T>::add(int idx, T el) {
 
 template <class T>
 T List<T>::remove(int idx) {
+    T removedEl;
+
     if (idx > count) {
         // Cancel the operation if the index is invalid
         cerr << "Can't remove from index " << idx << ". There are only " << count << " elements in the list." << endl;
-        return nullptr;
+        return removedEl;
     }
 
     // Keeps the future removed el to return it
-    T removedEl = data[idx];
+    removedEl = data[idx];
 
     // If the removed el isn't the last, a shift must be made
     if (idx != count) {
@@ -143,4 +149,6 @@ bool List<T>::full() {
     return count + 1 == size;
 }
 
-
+// Explicit instantiations of all the templates used in the file
+template class List<int>;
+template class List<string>;

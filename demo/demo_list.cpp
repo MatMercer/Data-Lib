@@ -4,14 +4,15 @@
 using namespace std;
 
 int main() {
-    List<string> list = List(2);
+    List<int> list = List<int>(2);
 
-    cout << "This is a test of compilation" << endl;
+    for (int i = 0; i < 1000; i++) {
+        list.add(i, i * 2);
+    }
+
     return 0;
 }
 
 // Explicit instantiations of all the templates used in the file
 template class List<int>;
-
-template
 template class List<string>;
