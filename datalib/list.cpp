@@ -3,8 +3,19 @@
 
 template <class T>
 bool List<T>::addSpace(int idx) {
-    // TODO: Implement this
+    // Duplicate if full
+    if (this->full()) {
+        this->duplicateDataSize();
+    }
+
+    // Extends the array until the size is good
     duplicateDataSizeToIdx(idx);
+
+    // Sends the rest of the elements to the right of the index
+    int i = count;
+    while (i-- >= idx) {
+        data[i + 1] = data[i];
+    }
 }
 
 template <class T>
