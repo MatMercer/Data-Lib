@@ -6,8 +6,11 @@ using namespace std;
 template <class T>
 bool List<T>::addSpace(int idx) {
     // Duplicate if full
-    if (this->full()) {
-        this->duplicateDataSize();
+    if (full()) {
+        if (!duplicateDataSize()) {
+            // Cancel the operation if it failed
+            return false;
+        }
     }
 
     // Extends the array until the size is good
@@ -15,9 +18,9 @@ bool List<T>::addSpace(int idx) {
 
     // Sends the rest of the elements to the right of the index
     int i = count;
-    while (i-- >= idx) {
+    do {
         data[i + 1] = data[i];
-    }
+    } while (i-- >= idx);
 
     return true;
 }
@@ -52,6 +55,9 @@ bool List<T>::duplicateDataSize() {
 
     // Shift the pointers
     data = newArray;
+
+    // Duplicate data size
+    size *= 2;
 
     // Returns success
     return true;
@@ -147,6 +153,14 @@ bool List<T>::empty() {
 template <class T>
 bool List<T>::full() {
     return count + 1 == size;
+}
+
+template <class T>
+void List<T>::printList() {
+    for (int i = 0; i <= count; i++) {
+        cout << " | " << data[i] << " | ";
+    }
+    cout << endl;
 }
 
 // Explicit instantiations of all the templates used in the file

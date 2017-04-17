@@ -46,6 +46,9 @@ public:
 
     // Is full?
     bool full();
+
+    // Print it for me
+    void printList();
 };
 
 #endif //DATALIB_LIST_H
