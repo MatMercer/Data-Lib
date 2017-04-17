@@ -3,7 +3,7 @@
 
 using namespace std;
 
-template <class T>
+template<class T>
 bool List<T>::addSpace(int idx) {
     // Duplicate if full
     if (full()) {
@@ -25,7 +25,7 @@ bool List<T>::addSpace(int idx) {
     return true;
 }
 
-template <class T>
+template<class T>
 bool List<T>::removeSpace(int idx) {
     // Sends everything to the left from the index
     while (idx++ < count) {
@@ -35,7 +35,7 @@ bool List<T>::removeSpace(int idx) {
     return true;
 }
 
-template <class T>
+template<class T>
 bool List<T>::duplicateDataSize() {
     // Allocate the new array
     T *newArray = allocateArray(size * 2);
@@ -51,7 +51,7 @@ bool List<T>::duplicateDataSize() {
     }
 
     // Delete old data
-    delete [] data;
+    delete[] data;
 
     // Shift the pointers
     data = newArray;
@@ -63,10 +63,10 @@ bool List<T>::duplicateDataSize() {
     return true;
 }
 
-template <class T>
+template<class T>
 bool List<T>::duplicateDataSizeToIdx(int idx) {
     // While not successful
-    while(idx >= size) {
+    while (idx >= size) {
         // If it failed to duplicate, cancel the operation
         if (!duplicateDataSize()) {
             return false;
@@ -76,12 +76,12 @@ bool List<T>::duplicateDataSizeToIdx(int idx) {
     return true;
 }
 
-template <class T>
+template<class T>
 T *List<T>::allocateArray(int size) {
     return new T[size];
 }
 
-template <class T>
+template<class T>
 List<T>::List(int initialSize) {
     // Setup internal variables
     size = initialSize;
@@ -90,7 +90,7 @@ List<T>::List(int initialSize) {
 
 }
 
-template <class T>
+template<class T>
 bool List<T>::add(int idx, T el) {
     // Duplicate if full
     if (full()) {
@@ -106,8 +106,7 @@ bool List<T>::add(int idx, T el) {
             // Cancel the operation if it failed
             return false;
         }
-    }
-    else if (idx > count + 1) {
+    } else if (idx > count + 1) {
         // Move the index to the last pos of the list
         cerr << "Index to add in the list too large: " << idx << ". Using " << count + 1 << " index instead." << endl;
         idx = count + 1;
@@ -121,7 +120,7 @@ bool List<T>::add(int idx, T el) {
     return true;
 }
 
-template <class T>
+template<class T>
 T List<T>::remove(int idx) {
     T removedEl;
 
@@ -145,17 +144,17 @@ T List<T>::remove(int idx) {
     return removedEl;
 }
 
-template <class T>
+template<class T>
 bool List<T>::empty() {
     return count == -1;
 }
 
-template <class T>
+template<class T>
 bool List<T>::full() {
     return count + 1 == size;
 }
 
-template <class T>
+template<class T>
 void List<T>::printList() {
     for (int i = 0; i <= count; i++) {
         cout << " | " << data[i] << " | ";
@@ -163,7 +162,7 @@ void List<T>::printList() {
     cout << endl;
 }
 
-template <class T>
+template<class T>
 T List<T>::update(int idx, T newEl) {
     T updatedEl;
 
@@ -180,5 +179,8 @@ T List<T>::update(int idx, T newEl) {
 }
 
 // Explicit instantiations of all the templates used in the file
-template class List<int>;
-template class List<string>;
+template
+class List<int>;
+
+template
+class List<string>;

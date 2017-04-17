@@ -39,7 +39,6 @@ public:
     // Remove an element from an idx
     T remove(int idx);
 
-    // TODO: Implement update
     T update(int idx, T newEl);
 
     // TODO: Implement addOrdered

@@ -28,6 +28,10 @@ int main() {
     cout << "Added ten -1 elements with the 4 index as a start..." << endl;
     list.printList();
 
+    list.add(0, 99);
+    cout << "Current list with 99 added to index 0:" << endl;
+    list.printList();
+
     return 0;
 }
 
