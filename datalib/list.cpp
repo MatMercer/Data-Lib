@@ -1,5 +1,7 @@
-
+#include <iostream>
 #include "list.h"
+
+using namespace std;
 
 template <class T>
 bool List<T>::addSpace(int idx) {
@@ -71,9 +73,9 @@ List<T>::List(int initialSize) {
 
 template <class T>
 bool List<T>::add(int idx, T el) {
-    // If the idx is too large, duplicate the array exponentially until it is right
-    if (idx >= size) {
-        if (!duplicateDataSizeToIdx(idx)) {
+    // Duplicate if full
+    if (full()) {
+        if (!duplicateDataSize()) {
             // Cancel the operation if it failed
             return false;
         }
@@ -85,6 +87,11 @@ bool List<T>::add(int idx, T el) {
             // Cancel the operation if it failed
             return false;
         }
+    }
+    else if (idx > count + 1) {
+        // Move the index to the last pos of the list
+        cerr << "Index to add in the list too large: " << idx << ". Using " << idx + 1 << " index instead." << endl;
+        idx = count + 1;
     }
 
     // Adds the el
