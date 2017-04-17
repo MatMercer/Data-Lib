@@ -40,6 +40,9 @@ public:
     T remove(int idx);
 
     // TODO: Implement update
+    T update(int idx, T newEl);
+
+    // TODO: Implement addOrdered
 
     // Is empty?
     bool empty();

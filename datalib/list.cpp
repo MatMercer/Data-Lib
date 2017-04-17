@@ -127,7 +127,7 @@ T List<T>::remove(int idx) {
 
     if (idx > count) {
         // Cancel the operation if the index is invalid
-        cerr << "Can't remove from index " << idx << ". There are only " << count << " elements in the list." << endl;
+        cerr << "Can't remove from index " << idx << ". The last index is " << count << "." << endl;
         return removedEl;
     }
 
@@ -161,6 +161,22 @@ void List<T>::printList() {
         cout << " | " << data[i] << " | ";
     }
     cout << endl;
+}
+
+template <class T>
+T List<T>::update(int idx, T newEl) {
+    T updatedEl;
+
+    if (idx > count) {
+        // Cancel the operation if the index is invalid
+        cerr << "Can't update from index " << idx << ". The last index is " << count << "." << endl;
+        return updatedEl;
+    }
+
+    // Update the element and returns the updated element
+    updatedEl = data[idx];
+    data[idx] = newEl;
+    return updatedEl;
 }
 
 // Explicit instantiations of all the templates used in the file
