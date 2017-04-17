@@ -21,6 +21,16 @@ bool List<T>::addSpace(int idx) {
 }
 
 template <class T>
+bool List<T>::removeSpace(int idx) {
+    // Sends everything to the left from the index
+    while (idx++ < count) {
+        data[idx] = data[idx + 1];
+    }
+
+    return true;
+}
+
+template <class T>
 bool List<T>::duplicateDataSize() {
     // Allocate the new array
     T *newArray = allocateArray(size * 2);
@@ -90,7 +100,7 @@ bool List<T>::add(int idx, T el) {
     }
     else if (idx > count + 1) {
         // Move the index to the last pos of the list
-        cerr << "Index to add in the list too large: " << idx << ". Using " << idx + 1 << " index instead." << endl;
+        cerr << "Index to add in the list too large: " << idx << ". Using " << count + 1 << " index instead." << endl;
         idx = count + 1;
     }
 
@@ -103,8 +113,24 @@ bool List<T>::add(int idx, T el) {
 
 template <class T>
 T List<T>::remove(int idx) {
-    // TODO: Implement this
-    return nullptr;
+    if (idx > count) {
+        // Cancel the operation if the index is invalid
+        cerr << "Can't remove from index " << idx << ". There are only " << count << " elements in the list." << endl;
+        return nullptr;
+    }
+
+    // Keeps the future removed el to return it
+    T removedEl = data[idx];
+
+    // If the removed el isn't the last, a shift must be made
+    if (idx != count) {
+        removeSpace(idx);
+    }
+
+    // Decrease el count
+    count -= 1;
+
+    return removedEl;
 }
 
 template <class T>
@@ -116,3 +142,5 @@ template <class T>
 bool List<T>::full() {
     return count + 1 == size;
 }
+
+

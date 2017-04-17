@@ -14,8 +14,12 @@ private:
     int count;
 
     // Adds an space to an idx
-    // addSpace(1) will shift everything to the right and leave 1 index empty
+    // addSpace(1) will shift everything to the right and leave 1 index 'empty'
     bool addSpace(int idx);
+
+    // Remove an space from an idx, assuming it doesn't need to be used
+    // removeSpace(1) will shift everything to the left and leave 1 index filled up
+    bool removeSpace(int idx);
 
     // Returns true if it was possible to allocate the memory
     bool duplicateDataSize();
