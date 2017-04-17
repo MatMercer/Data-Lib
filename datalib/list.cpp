@@ -178,6 +178,38 @@ T List<T>::update(int idx, T newEl) {
     return updatedEl;
 }
 
+template <class T>
+bool List<T>::addSorted(T el) {
+    // Sort the array first
+    sort();
+
+    // Finds where the new el should be placed
+    int sortedIndex = 0;
+    int i = 0;
+    while (el > data[i]) {
+        i += 1;
+    }
+    sortedIndex = i;
+
+    // Adds the element to the right index
+    add(sortedIndex, el);
+
+    return true;
+}
+
+template <class T>
+void List<T>::sort() {
+    for (int i = 1; i <= count; i++) {
+        T idx = data[i];
+        int j = i;
+        while (j > 0 && data[j - 1] > idx) {
+            data[j] = data[j - 1];
+            j -= 1;
+        }
+        data[j] = idx;
+    }
+}
+
 // Explicit instantiations of all the templates used in the file
 template
 class List<int>;

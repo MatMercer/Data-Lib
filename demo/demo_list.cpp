@@ -22,14 +22,18 @@ int main() {
     cout << "Current list with -1 added to index 7:" << endl;
     list.printList();
 
-    for (int i = 3; i < 13; i++) {
-        list.add(i, -1);
+    for (int i = 3; i < 6; i++) {
+        list.add(i, -7);
     }
-    cout << "Added ten -1 elements with the 4 index as a start..." << endl;
+    cout << "Added three -7 elements with the 4 index as a start..." << endl;
     list.printList();
 
     list.add(0, 99);
     cout << "Current list with 99 added to index 0:" << endl;
+    list.printList();
+
+    list.addSorted(-3);
+    cout << "Current list with -3 added in a sorted way:" << endl;
     list.printList();
 
     return 0;

@@ -30,18 +30,21 @@ private:
     // Returns a pointer of T with the given size
     T *allocateArray(int size);
 
+
 public:
     List(int startSize);
 
     // Adds a element to an idx
     bool add(int idx, T el);
 
+    // Orders the data in a crescent way and add the element
+    bool addSorted(T el);
+
     // Remove an element from an idx
     T remove(int idx);
 
+    // Update an element in a index
     T update(int idx, T newEl);
-
-    // TODO: Implement addOrdered
 
     // Is empty?
     bool empty();
@@ -51,6 +54,9 @@ public:
 
     // Print it for me
     void printList();
+
+    // Insertion sort
+    void sort();
 };
 
 #endif //DATALIB_LIST_H
