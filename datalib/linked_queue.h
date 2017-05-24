@@ -10,6 +10,9 @@ private:
     /* First element of the queue */
     Node<T> *head;
 
+    /* Last element of the queue */
+    Node<T> *tail;
+
     /* Element count */
     int elCount;
 

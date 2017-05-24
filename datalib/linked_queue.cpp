@@ -1,12 +1,11 @@
 #include "linked_queue.h"
-#include "../datalib/node.h"
-#include <iostream>
 
 using namespace std;
 
 template <class T>
 LinkedQueue<T>::LinkedQueue() {
     head = new Node<T>();
+    tail = head;
     elCount = 0;
 }
 
@@ -16,11 +15,13 @@ bool LinkedQueue<T>::enqueue(T el) {
         head->setValue(el);
     }
     else {
-        Node<T> *oldLastNode = lastNode();
+        Node<T> *oldLastNode = tail;
         Node<T> *newLastNode = new Node<T>(el, nullptr);
 
 
         oldLastNode->setNext(newLastNode);
+
+        tail = newLastNode;
     }
 
     elCount += 1;
@@ -81,19 +82,6 @@ void LinkedQueue<T>::printLinkedQueue() {
 
         cout << "\n";
     }
-}
-
-template <class T>
-Node<T> *LinkedQueue<T>::lastNode() {
-    int aux = elCount;
-    Node<T> *lastNode = head;
-
-    while (aux > 1) {
-        aux--;
-        lastNode = lastNode->getNext();
-    }
-
-    return lastNode;
 }
 
 // Explicit instantiations of all the templates used in the file
