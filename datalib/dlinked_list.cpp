@@ -1,10 +1,10 @@
 #include "dlinked_list.h"
 
-template <class T>
+template<class T>
 DNode<T> *DLinkedList<T>::elAtPos(int i) {
     /* 'i' var go backwards, el go forwards */
     DNode<T> *el = head;
-    while(i != 0) {
+    while (i != 0) {
         el = el->getNext();
         i--;
     }
@@ -12,36 +12,30 @@ DNode<T> *DLinkedList<T>::elAtPos(int i) {
     return el;
 }
 
-template <class T>
+template<class T>
 DLinkedList<T>::DLinkedList() {
     this->head = nullptr;
     this->tail = nullptr;
     this->count = -1;
 }
 
-template <class T>
+template<class T>
 bool DLinkedList<T>::add(int idx, T el) {
     if (empty()) {
         /* Empty list? Just make a new head and tail */
         head = new DNode<T>(el, nullptr);
         tail = head;
-    }
-
-    else if (idx == 0) {
+    } else if (idx == 0) {
         /* Add it as a new head */
         DNode<T> *newHead = new DNode<T>(el, head);
         head->setPrevious(newHead);
         head = newHead;
-    }
-
-    else if (idx > count) {
+    } else if (idx > count) {
         /* Add to the last part of the list */
         DNode<T> *newTail = new DNode<T>(el, nullptr, tail);
         tail->setNext(newTail);
         tail = newTail;
-    }
-
-    else if (idx < count && idx > 0) {
+    } else if (idx < count && idx > 0) {
         /* Take the elements that are on the left and right of the new el */
         DNode<T> *rightEl = elAtPos(idx);
         DNode<T> *leftEl = elAtPos(idx - 1);
@@ -49,11 +43,10 @@ bool DLinkedList<T>::add(int idx, T el) {
         /* Pad the element and add the new one */
         DNode<T> *newEl = new DNode<T>(el, rightEl, leftEl);
         leftEl->setNext(newEl);
-    }
-
-    else {
+    } else {
         /* Invalid pos */
-        cerr << "Tried to add an element at invalid index '" << idx << "'. The current list have " << count + 1 << " elements." << endl;
+        cerr << "Tried to add an element at invalid index '" << idx << "'. The current list have " << count + 1
+             << " elements." << endl;
         return false;
     }
 
@@ -63,7 +56,7 @@ bool DLinkedList<T>::add(int idx, T el) {
     return true;
 }
 
-template <class T>
+template<class T>
 T DLinkedList<T>::remove(int idx) {
     T foundEl;
 
@@ -71,8 +64,7 @@ T DLinkedList<T>::remove(int idx) {
         /* Empty list? Can't do it.. */
         cerr << "You tried to remove an element from an empty list!" << endl;
         return NULL;
-    }
-    else if (idx == 0) {
+    } else if (idx == 0) {
         /* Gets the head value & delete it */
         DNode<T> *oldHead = head;
         foundEl = oldHead->getValue();
@@ -85,8 +77,7 @@ T DLinkedList<T>::remove(int idx) {
         delete oldHead;
 
         head->setPrevious(nullptr);
-    }
-    else if (idx >= count) {
+    } else if (idx >= count) {
         /* Gets the tail value & delete it */
         foundEl = tail->getValue();
         delete tail;
@@ -97,8 +88,7 @@ T DLinkedList<T>::remove(int idx) {
             tail->setNext(nullptr);
         }
 
-    }
-    else if (idx < count && idx > 0) {
+    } else if (idx < count && idx > 0) {
         /* Take the elements that are on the left and right of the old el */
         DNode<T> *middleEl = elAtPos(idx);
 
@@ -109,10 +99,10 @@ T DLinkedList<T>::remove(int idx) {
         /* Get the middle el value & deletes it */
         foundEl = middleEl->getValue();
         delete middleEl;
-    }
-    else {
+    } else {
         /* Invalid pos */
-        cerr << "Tried to remove an element at invalid index '" << idx << "'. The current list have " << count + 1 << " elements.";
+        cerr << "Tried to remove an element at invalid index '" << idx << "'. The current list have " << count + 1
+             << " elements.";
         return NULL;
     }
 
@@ -122,12 +112,12 @@ T DLinkedList<T>::remove(int idx) {
     return foundEl;
 }
 
-template <class T>
+template<class T>
 bool DLinkedList<T>::empty() {
     return count == -1;
 }
 
-template <class T>
+template<class T>
 void DLinkedList<T>::printLinkedList() {
     if (!empty()) {
         int aux = count;
@@ -144,5 +134,8 @@ void DLinkedList<T>::printLinkedList() {
 }
 
 // Explicit instantiations of all the templates used in the file
-template class DLinkedList<string>;
-template class DLinkedList<int>;
+template
+class DLinkedList<string>;
+
+template
+class DLinkedList<int>;

@@ -178,7 +178,7 @@ T List<T>::update(int idx, T newEl) {
     return updatedEl;
 }
 
-template <class T>
+template<class T>
 bool List<T>::addSorted(T el) {
     // Sort the array first
     sort();
@@ -197,7 +197,7 @@ bool List<T>::addSorted(T el) {
     return true;
 }
 
-template <class T>
+template<class T>
 void List<T>::sort() {
     for (int i = 1; i <= count; i++) {
         T idx = data[i];

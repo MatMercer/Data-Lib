@@ -36,5 +36,8 @@ int main() {
 }
 
 // Explicit instantiations of all the templates used in the file
-template class DLinkedList<int>;
-template class DLinkedList<string>;
+template
+class DLinkedList<int>;
+
+template
+class DLinkedList<string>;

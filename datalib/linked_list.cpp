@@ -1,32 +1,26 @@
 #include "linked_list.h"
 
-template <class T>
+template<class T>
 LinkedList<T>::LinkedList() {
     count = -1;
 }
 
-template <class T>
+template<class T>
 bool LinkedList<T>::add(int idx, T el) {
     if (empty()) {
         /* Empty list? Just make a new head and tail */
         head = new Node<T>(el, nullptr);
         tail = head;
-    }
-
-    else if (idx == 0) {
+    } else if (idx == 0) {
         /* Add it as a new head */
         Node<T> *newHead = new Node<T>(el, head);
         head = newHead;
-    }
-
-    else if (idx > count) {
+    } else if (idx > count) {
         /* Add to the last part of the list */
         Node<T> *newTail = new Node<T>(el, nullptr);
         tail->setNext(newTail);
         tail = newTail;
-    }
-
-    else if (idx < count && idx > 0) {
+    } else if (idx < count && idx > 0) {
         /* Take the elements that are on the left and right of the new el */
         Node<T> *rightEl = elAtPos(idx);
         Node<T> *leftEl = elAtPos(idx - 1);
@@ -35,11 +29,10 @@ bool LinkedList<T>::add(int idx, T el) {
         Node<T> *newEl = new Node<T>(el, rightEl);
         leftEl->setNext(newEl);
         newEl->setNext(rightEl);
-    }
-
-    else {
+    } else {
         /* Invalid pos */
-        cerr << "Tried to add an element at invalid index '" << idx << "'. The current list have " << count + 1 << " elements." << endl;
+        cerr << "Tried to add an element at invalid index '" << idx << "'. The current list have " << count + 1
+             << " elements." << endl;
         return false;
     }
 
@@ -49,7 +42,7 @@ bool LinkedList<T>::add(int idx, T el) {
     return true;
 }
 
-template <class T>
+template<class T>
 T LinkedList<T>::remove(int idx) {
     T foundEl;
 
@@ -57,8 +50,7 @@ T LinkedList<T>::remove(int idx) {
         /* Empty list? Can't do it.. */
         cerr << "You tried to remove an element from an empty list!" << endl;
         return NULL;
-    }
-    else if (idx == 0) {
+    } else if (idx == 0) {
         /* Gets the head value & delete it */
         Node<T> *oldHead = head;
         foundEl = oldHead->getValue();
@@ -69,8 +61,7 @@ T LinkedList<T>::remove(int idx) {
         }
 
         delete oldHead;
-    }
-    else if (idx >= count) {
+    } else if (idx >= count) {
         /* Gets the tail value & delete it */
         foundEl = tail->getValue();
         delete tail;
@@ -81,8 +72,7 @@ T LinkedList<T>::remove(int idx) {
             tail->setNext(nullptr);
         }
 
-    }
-    else if (idx < count && idx > 0) {
+    } else if (idx < count && idx > 0) {
         /* Take the elements that are on the left and right of the old el */
         Node<T> *rightEl = elAtPos(idx + 1);
         Node<T> *middleEl = elAtPos(idx);
@@ -94,10 +84,10 @@ T LinkedList<T>::remove(int idx) {
         /* Get the middle el value & deletes it */
         foundEl = middleEl->getValue();
         delete middleEl;
-    }
-    else {
+    } else {
         /* Invalid pos */
-        cerr << "Tried to remove an element at invalid index '" << idx << "'. The current list have " << count + 1 << " elements.";
+        cerr << "Tried to remove an element at invalid index '" << idx << "'. The current list have " << count + 1
+             << " elements.";
         return NULL;
     }
 
@@ -107,12 +97,12 @@ T LinkedList<T>::remove(int idx) {
     return foundEl;
 }
 
-template <class T>
+template<class T>
 bool LinkedList<T>::empty() {
     return count == 0;
 }
 
-template <class T>
+template<class T>
 void LinkedList<T>::printLinkedList() {
     if (!empty()) {
         int aux = count;
@@ -128,11 +118,11 @@ void LinkedList<T>::printLinkedList() {
     }
 }
 
-template <class T>
+template<class T>
 Node<T> *LinkedList<T>::elAtPos(int i) {
     /* 'i' var go backwards, el go forwards */
     Node<T> *el = head;
-    while(i != 0) {
+    while (i != 0) {
         el = el->getNext();
         i--;
     }
@@ -141,5 +131,8 @@ Node<T> *LinkedList<T>::elAtPos(int i) {
 }
 
 // Explicit instantiations of all the templates used in the file
-template class LinkedList<string>;
-template class LinkedList<int>;
+template
+class LinkedList<string>;
+
+template
+class LinkedList<int>;

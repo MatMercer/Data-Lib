@@ -1,5 +1,4 @@
 #include "../datalib/linked_queue.h"
-#include <iostream>
 
 using namespace std;
 

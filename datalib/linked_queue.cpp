@@ -2,19 +2,18 @@
 
 using namespace std;
 
-template <class T>
+template<class T>
 LinkedQueue<T>::LinkedQueue() {
     head = new Node<T>();
     tail = head;
     elCount = 0;
 }
 
-template <class T>
+template<class T>
 bool LinkedQueue<T>::enqueue(T el) {
     if (elCount == 0) {
         head->setValue(el);
-    }
-    else {
+    } else {
         Node<T> *oldLastNode = tail;
         Node<T> *newLastNode = new Node<T>(el, nullptr);
 
@@ -29,7 +28,7 @@ bool LinkedQueue<T>::enqueue(T el) {
     return true;
 }
 
-template <class T>
+template<class T>
 T LinkedQueue<T>::dequeue() {
     if (elCount > 0) {
         /* Deletes the old head and stores the value of it */
@@ -49,7 +48,7 @@ T LinkedQueue<T>::dequeue() {
     return NULL;
 }
 
-template <class T>
+template<class T>
 T LinkedQueue<T>::peek() {
     if (elCount > 0) {
         return head->getValue();
@@ -58,17 +57,17 @@ T LinkedQueue<T>::peek() {
     return NULL;
 }
 
-template <class T>
+template<class T>
 int LinkedQueue<T>::count() {
     return elCount;
 }
 
-template <class T>
+template<class T>
 bool LinkedQueue<T>::empty() {
     return elCount == 0;
 }
 
-template <class T>
+template<class T>
 void LinkedQueue<T>::printLinkedQueue() {
     if (elCount != 0) {
         int aux = elCount;

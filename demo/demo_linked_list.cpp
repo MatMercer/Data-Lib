@@ -36,6 +36,9 @@ int main() {
 }
 
 // Explicit instantiations of all the templates used in the file
-template class LinkedList<int>;
-template class LinkedList<string>;
+template
+class LinkedList<int>;
+
+template
+class LinkedList<string>;
 

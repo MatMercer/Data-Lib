@@ -4,7 +4,7 @@
 
 #include "node.h"
 
-template <class T>
+template<class T>
 class LinkedQueue {
 private:
     /* First element of the queue */
@@ -18,6 +18,7 @@ private:
 
     /* Returns the last node of the queue */
     Node<T> *lastNode();
+
 public:
     LinkedQueue();
 

@@ -13,7 +13,7 @@ void debugEnqueue(Queue<string> *queue, string added) {
 }
 
 void debugQueueSize(Queue<string> *queue) {
-     cout << endl << "The size of the queue is: " << queue->queueSize() << endl;
+    cout << endl << "The size of the queue is: " << queue->queueSize() << endl;
 }
 
 

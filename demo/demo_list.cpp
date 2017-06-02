@@ -40,5 +40,8 @@ int main() {
 }
 
 // Explicit instantiations of all the templates used in the file
-template class List<int>;
-template class List<string>;
+template
+class List<int>;
+
+template
+class List<string>;

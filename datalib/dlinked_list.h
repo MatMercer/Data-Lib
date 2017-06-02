@@ -39,5 +39,4 @@ public:
 };
 
 
-
 #endif //DATALIB_DLINKED_LIST_H
