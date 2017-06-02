@@ -1,40 +1,54 @@
-#include "linked_list.h"
+#include "dlinked_list.h"
 
 template <class T>
-LinkedList<T>::LinkedList() {
-    count = -1;
+DNode<T> *DLinkedList<T>::elAtPos(int i) {
+    /* 'i' var go backwards, el go forwards */
+    DNode<T> *el = head;
+    while(i != 0) {
+        el = el->getNext();
+        i--;
+    }
+
+    return el;
 }
 
 template <class T>
-bool LinkedList<T>::add(int idx, T el) {
+DLinkedList<T>::DLinkedList() {
+    this->head = nullptr;
+    this->tail = nullptr;
+    this->count = -1;
+}
+
+template <class T>
+bool DLinkedList<T>::add(int idx, T el) {
     if (empty()) {
         /* Empty list? Just make a new head and tail */
-        head = new Node<T>(el, nullptr);
+        head = new DNode<T>(el, nullptr);
         tail = head;
     }
 
     else if (idx == 0) {
         /* Add it as a new head */
-        Node<T> *newHead = new Node<T>(el, head);
+        DNode<T> *newHead = new DNode<T>(el, head);
+        head->setPrevious(newHead);
         head = newHead;
     }
 
     else if (idx > count) {
         /* Add to the last part of the list */
-        Node<T> *newTail = new Node<T>(el, nullptr);
+        DNode<T> *newTail = new DNode<T>(el, nullptr, tail);
         tail->setNext(newTail);
         tail = newTail;
     }
 
     else if (idx < count && idx > 0) {
         /* Take the elements that are on the left and right of the new el */
-        Node<T> *rightEl = elAtPos(idx);
-        Node<T> *leftEl = elAtPos(idx - 1);
+        DNode<T> *rightEl = elAtPos(idx);
+        DNode<T> *leftEl = elAtPos(idx - 1);
 
         /* Pad the element and add the new one */
-        Node<T> *newEl = new Node<T>(el, rightEl);
+        DNode<T> *newEl = new DNode<T>(el, rightEl, leftEl);
         leftEl->setNext(newEl);
-        newEl->setNext(rightEl);
     }
 
     else {
@@ -50,7 +64,7 @@ bool LinkedList<T>::add(int idx, T el) {
 }
 
 template <class T>
-T LinkedList<T>::remove(int idx) {
+T DLinkedList<T>::remove(int idx) {
     T foundEl;
 
     if (empty()) {
@@ -60,7 +74,7 @@ T LinkedList<T>::remove(int idx) {
     }
     else if (idx == 0) {
         /* Gets the head value & delete it */
-        Node<T> *oldHead = head;
+        DNode<T> *oldHead = head;
         foundEl = oldHead->getValue();
 
         /* Sets the new head when possible */
@@ -69,6 +83,8 @@ T LinkedList<T>::remove(int idx) {
         }
 
         delete oldHead;
+
+        head->setPrevious(nullptr);
     }
     else if (idx >= count) {
         /* Gets the tail value & delete it */
@@ -84,12 +100,11 @@ T LinkedList<T>::remove(int idx) {
     }
     else if (idx < count && idx > 0) {
         /* Take the elements that are on the left and right of the old el */
-        Node<T> *rightEl = elAtPos(idx + 1);
-        Node<T> *middleEl = elAtPos(idx);
-        Node<T> *leftEl = elAtPos(idx - 1);
+        DNode<T> *middleEl = elAtPos(idx);
 
         /* Change the pointers */
-        leftEl->setNext(rightEl);
+        (middleEl->getNext())->setPrevious(middleEl->getPrevious());
+        (middleEl->getPrevious())->setNext(middleEl->getNext());
 
         /* Get the middle el value & deletes it */
         foundEl = middleEl->getValue();
@@ -108,15 +123,15 @@ T LinkedList<T>::remove(int idx) {
 }
 
 template <class T>
-bool LinkedList<T>::empty() {
-    return count == 0;
+bool DLinkedList<T>::empty() {
+    return count == -1;
 }
 
 template <class T>
-void LinkedList<T>::printLinkedList() {
+void DLinkedList<T>::printLinkedList() {
     if (!empty()) {
         int aux = count;
-        Node<T> *auxNode = head;
+        DNode<T> *auxNode = head;
 
         while (aux > 0) {
             cout << auxNode->getValue() << " ";
@@ -128,18 +143,6 @@ void LinkedList<T>::printLinkedList() {
     }
 }
 
-template <class T>
-Node<T> *LinkedList<T>::elAtPos(int i) {
-    /* 'i' var go backwards, el go forwards */
-    Node<T> *el = head;
-    while(i != 0) {
-        el = el->getNext();
-        i--;
-    }
-
-    return el;
-}
-
 // Explicit instantiations of all the templates used in the file
-template class LinkedList<string>;
-template class LinkedList<int>;
+template class DLinkedList<string>;
+template class DLinkedList<int>;
