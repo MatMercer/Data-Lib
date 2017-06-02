@@ -4,7 +4,7 @@ project(datalib)
 set(CMAKE_CXX_STANDARD 14)
 
 # Compile all the lib sources
-set(LIB_SOURCES datalib/stack.h datalib/stack.cpp datalib/queue.cpp datalib/queue.h datalib/list.cpp datalib/list.h datalib/node.cpp datalib/node.h datalib/linked_queue.cpp datalib/linked_queue.h)
+set(LIB_SOURCES datalib/stack.h datalib/stack.cpp datalib/queue.cpp datalib/queue.h datalib/list.cpp datalib/list.h datalib/node.cpp datalib/node.h datalib/linked_queue.cpp datalib/linked_queue.h datalib/linked_list.cpp datalib/linked_list.h)
 add_library(datalib SHARED ${LIB_SOURCES})
 
 # Stack demo
@@ -26,3 +26,9 @@ target_link_libraries(listdemo datalib)
 set(LINKED_QUEUE_FILES demo/demo_linked_queue.cpp)
 add_executable(linkedqueuedemo ${LINKED_QUEUE_FILES})
 target_link_libraries(linkedqueuedemo datalib)
+
+# Linked list demo
+set(LINKED_LIST_DEMO demo/demo_linked_list.cpp)
+add_executable(linkedlistdemo ${LINKED_LIST_DEMO})
+target_link_libraries(linkedlistdemo datalib)
+

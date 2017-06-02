@@ -34,3 +34,5 @@ Node<T>::Node() {
 
 template
 class Node<string>;
+template
+class Node<int>;
